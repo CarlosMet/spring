@@ -1,2 +1,5 @@
-package com.example.demo.Persistencia.Entity;public class ProductoFacturaPK {
+package com.example.demo.Persistencia.Entity;
+
+public class ProductoFacturaPK {
+
 }
