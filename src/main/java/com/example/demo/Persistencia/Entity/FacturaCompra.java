@@ -25,6 +25,13 @@ public class FacturaCompra implements Serializable {
     @Column(name = "activo")
     private Boolean activo;
 
+    @ManyToOne
+    @JoinColumn(name="ident_cliente", insertable = false, updatable = false)
+    private Cliente cliente;
+
+    @JoinColumn(name="ident_vendedor", insertable = false, updatable = false)
+    private Vendedor vendedor;
+
     public String getCodFactura() {
         return codFactura;
     }

@@ -8,15 +8,10 @@ import java.io.Serializable;
 @Table(name = "producto_factura") // Asegúrate de que el nombre de la tabla sea correcto
 public class ProductoFactura implements Serializable {
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "cod_factura", referencedColumnName = "cod_factura")
-    private FacturaCliente facturaCliente;
+    @EmbeddedId
+    private ProductoFacturaPK Id;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "cod_producto", referencedColumnName = "cod_producto")
-    private Producto producto;
+
 
     @Column(name = "val_unitario")
     private Float valUnitario;
@@ -24,26 +19,21 @@ public class ProductoFactura implements Serializable {
     @Column(name = "cantidad")
     private Integer cantidad;
 
-
     @ManyToOne
-    @JoinColumn(name="cod_producto", updatable = false, insertable = false)
+    @JoinColumn(name="cod_factura", insertable = false, updatable = false)
+    @JoinColumn(name="cod_producto", insertable = false, updatable = false)
+
+
 
     // Getters and Setters
 
-    public FacturaCliente getFacturaCliente() {
-        return facturaCliente;
+
+    public ProductoFacturaPK getId() {
+        return Id;
     }
 
-    public void setFacturaCliente(FacturaCliente facturaCliente) {
-        this.facturaCliente = facturaCliente;
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
+    public void setId(ProductoFacturaPK id) {
+        Id = id;
     }
 
     public Float getValUnitario() {
